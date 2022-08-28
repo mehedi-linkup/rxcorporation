@@ -1,0 +1,47 @@
+.company-name {
+    margin-top: 20px;
+    color: #f16c69;
+  }
+ 
+  img#previewImage {
+    height: 100px;
+    width: 100px;
+}
+div#example_filter {
+    width: 50%;
+    float: right;
+    margin-left: auto;
+    text-align: right;
+}
+div#example_length {
+    width: 50%;
+    float: left;
+}
+div#example_paginate {
+    width: 100%;
+    float: right;
+    text-align: center;
+}
+div#example_paginate span a {
+    margin: 5px;
+    cursor: pointer;
+}
+.table-img{
+    height: 40px;
+    width: 40px;
+}
+.company-name {
+    margin-top: 20px;
+    color: #f16c69;
+    font-size: 15px;
+}
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred, .ck-focused{
+    height: 130px;
+}
+.counter-save{
+    margin-top: 30px;
+}
+.enlarged .company-logo{
+    width: 60px;
+  }
+
