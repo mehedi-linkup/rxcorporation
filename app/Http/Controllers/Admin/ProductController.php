@@ -140,6 +140,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $product = Product::find($id);      
+            if(!empty($product->image) && file_exists($product->image)){
+                unlink($product->image);
+            }
+            $product->forceDelete();
+            return redirect()->back()->with('success', 'Deleted!');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->with('error', 'Delete Failed!');
+        }
     }
 }

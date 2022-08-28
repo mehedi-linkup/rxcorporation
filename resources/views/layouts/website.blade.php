@@ -26,7 +26,7 @@
   <link href="{{asset('website')}}/css/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{asset('website')}}/css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="{{asset('website')}}/css/simple-lightbox.min.css">
-
+  @stack('website-css')
   <!-- Template Main CSS File -->
   <link href="{{asset('website')}}/css/style.css" rel="stylesheet">
   <script src="{{asset('website')}}/js/jquery.min.js"></script>

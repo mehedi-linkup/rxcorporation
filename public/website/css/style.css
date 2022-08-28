@@ -248,11 +248,11 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
 }
 @media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
+  /* .navbar .dropdown .dropdown ul {
     left: -90%;
-  }
+  } */
   .navbar .dropdown .dropdown:hover > ul {
-    left: -100%;
+    left: 100%;
   }
 }
 
@@ -1432,4 +1432,87 @@ section.header-top {
 .footer-logo{
   height: 50px;
   width: 60px;
+}
+
+/*--------------------------------------------------------------
+# Category
+--------------------------------------------------------------*/
+.category:hover .owl-carousel .owl-nav button.owl-prev, 
+.category:hover .owl-carousel .owl-nav button.owl-next {
+  opacity: 1;
+}
+.category .owl-carousel .owl-nav {
+  position: absolute;
+  top: 25%;
+}
+.category .owl-carousel .owl-nav button.owl-prev {
+  position: absolute;
+  opacity: 0;
+  left: -23px;
+  font-size: 45px;
+  width: 45px;
+  height: 45px;
+  background-color: #2324264f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: .9;
+  transition: all 1s ease-in-out;
+}
+.category .owl-carousel .owl-nav button.owl-next {
+  position: absolute;
+  opacity: 0;
+  right: -1140px;
+  font-size: 45px;
+  width: 45px;
+  height: 45px;
+  background-color: #2324264f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: .9;
+  transition: all 1s ease;
+}
+.category .img-box {
+  position: relative;
+}
+.category .category-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.category .card-body a.btn {
+  color: #0a0909;
+  font-size: 13px;
+  transition: all 0.5s ease;
+}
+.category .card-body a.btn:hover {
+  background-color: #5fcf80;
+  color: #fff;
+  
+}
+/* Feature Product*/
+.feature-product .card-body a {
+  font-size: 14px;
+  color: inherit;
+  transition: all 0.3s;
+
+}
+.feature-product .img-box  {
+  position: relative;
+}
+.feature-product .img-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.feature-product .card-body a:hover {
+  color: #18d26e;
 }

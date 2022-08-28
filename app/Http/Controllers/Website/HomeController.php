@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Counter;
 use App\Models\Galllery;
 use App\Models\Management;
@@ -23,7 +24,8 @@ class HomeController extends Controller
         $data['special_first'] = Specialization::take(1)->first();
         $data['specialize']= Specialization::skip(1)->take(3)->get();
         $data['gallery'] = Galllery::all();
-        
+        $data['product'] = Product::all();
+        $data['category'] = Category::all();
         return view('website.index',$data);
     }
     public function contact(){
@@ -52,6 +54,11 @@ class HomeController extends Controller
     public function product(){
         $product = Product::latest()->get();
         return view('website.product',compact('product'));
+    }
+    public function productWithCat($slug) {
+        $category = Category::where('slug', $slug)->first();
+        $product = Product::where('category_id', $category->id)->get();
+        return view('website.product-cat', compact('product', 'category'));
     }
     public function productDetails($slug){
         $item = Product::where('slug',$slug)->first();

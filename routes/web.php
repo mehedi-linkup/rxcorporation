@@ -48,6 +48,7 @@ Route::get('/management/show',[HomeController::class,'management'])->name('manag
 Route::get('/gallery/show',[HomeController::class,'gallery'])->name('gallery.show');
 Route::get('/team/show',[HomeController::class,'team'])->name('team.show');
 Route::get('/product/show',[HomeController::class,'product'])->name('product.show');
+Route::get('/product/category/show/{slug}',[HomeController::class,'productWithCat'])->name('product-cat.show');
 Route::get('/product/show/{slug}',[HomeController::class,'productDetails'])->name('product.details');
 Route::post('/sms/store',[ContactController::class,'contactStore'])->name('sms.store');
 

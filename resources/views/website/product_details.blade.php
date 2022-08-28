@@ -11,7 +11,7 @@
         <div class="container" data-aos="fade-up">
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
                 <div class="col-lg-6 col-md-6 text-center overflow-hidden product-details-img">
-                    <img src="@if(isset($item->image)){{asset($item->image)}}@endif" alt="" class="w-100 product-details-img">
+                    <img src="@if(isset($item->image)){{asset($item->image)}}@endif" alt="" class="product-details-img">
                 </div>
                 <div class="col-lg-6">
                     <h3><span class="me-2 text-success">Product Name:</span>@if(isset($item->name)){{$item->name}}@endif</h3>
