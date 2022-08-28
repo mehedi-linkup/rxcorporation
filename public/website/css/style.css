@@ -1477,6 +1477,11 @@ section.header-top {
 }
 .category .img-box {
   position: relative;
+  overflow: hidden;
+}
+.category .img-box img:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease;
 }
 .category .category-link {
   position: absolute;

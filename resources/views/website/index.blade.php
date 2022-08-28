@@ -76,7 +76,7 @@
                                 <div class="item">
                                     <div class="card text-center" style="border:none">
                                         <div class="img-box border">
-                                            <img width="100%" src="{{ $item->image }}" class="card-img-top"
+                                            <img src="{{ $item->image }}" class="card-img-top"
                                             alt="{{ $item->name }}">
                                             <a class="category-link" href="{{ route('product-cat.show', $item->slug) }}"></a>
                                         </div>
