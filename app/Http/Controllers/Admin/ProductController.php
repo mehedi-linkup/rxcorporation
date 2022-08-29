@@ -55,9 +55,8 @@ class ProductController extends Controller
 
         // return $slug;
         
-        $url = 'product/show/'.$slug;
-        $barcode = DNS1D::getBarcodePNG($url, 'C39', 1, 33);
-        // return $barcode;
+        // $url = 'product/show/'.$slug;
+        // $barcode = DNS1D::getBarcodePNG($url, 'C39', 1, 33);
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $slug;
