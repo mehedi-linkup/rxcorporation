@@ -411,7 +411,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (max-width: 768px) {
   #hero {
-    height: 100vh;
+    height: 25vh;
   }
   #hero h1 {
     font-size: 28px;
@@ -1366,6 +1366,11 @@ section {
 .gallery-image img{
   height: 250px;
 }
+@media(max-width:575px) {
+  .gallery-image img {
+    height: auto;
+  }
+}
 .product{
   overflow: hidden;
   border: 1px solid #ddd;
@@ -1509,6 +1514,14 @@ section.header-top {
 }
 .feature-product .img-box  {
   position: relative;
+}
+.feature-product .img-box img {
+  height: 259px;
+}
+@media(max-width:575px) {
+  .feature-product .img-box img {
+    height: auto;
+  }
 }
 .feature-product .img-link {
   position: absolute;

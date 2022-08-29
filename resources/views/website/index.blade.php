@@ -20,7 +20,7 @@
                     <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                         <div id="hero" class="d-flex justify-content-center align-items-center"
                             style="background-image: url({{ asset($item->image) }})">
-                            <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="container position-relative d-none d-md-block" data-aos="zoom-in" data-aos-delay="100">
                                 <h1>{{ $item->title }}</h1>
                                 <h2>{{ $item->short_description }}</h2>
                                 <a href="{{ route('home') }}" class="btn-get-started">Get Started</a>
@@ -97,12 +97,12 @@
                 <div class="section-title">
                     <h2 class="mb-3">Featured Product</h2>
                 </div>
-                <div class="row">
-                    @foreach($product as $item)
+                <div class="row" data-aos="fade-up" data-aos-delay="600">
+                    @foreach($product->take(8) as $item)
                     <div class="col-lg-3">
                         <div class="card border-0">
                             <div class="img-box p-lg-3">
-                                <img src="{{ $item->image }}" class="card-img-top" alt="{{ $item->image }}" style="height: 259px">
+                                <img src="{{ $item->image }}" class="card-img-top" alt="{{ $item->image }}">
                                 <a class="img-link" href="{{ route('product.details', $item->slug) }}"></a>
                             </div>
                             <div class="card-body">
@@ -212,8 +212,8 @@
                 <div class="section-title">
                     <h2 class="mb-3">Our Gallery</h2>
                 </div>
-                <div class="row">
-                    @foreach ($gallery as $item)
+                <div class="row" data-aos="fade-up" data-aos-delay="600">
+                    @foreach ($gallery->take(12) as $item)
                         <div class="col-md-3 mt-3 cart-hover">
                             <div class="card gallery gallery-image w-100">
                                 <a href="{{ asset($item->image) }}"><img src="{{ asset($item->image) }}" class="w-100"
