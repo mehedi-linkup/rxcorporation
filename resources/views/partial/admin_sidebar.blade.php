@@ -16,6 +16,7 @@
                     <ul class="submenu">
                         <li><a href="{{route('category.index')}}">Category</a></li>
                         <li><a href="{{route('product.index')}}">Product</a></li>
+                        <li><a href="{{route('barcode.index')}}">Barcode Generate</a></li>
                     </ul>
                 </li>
               

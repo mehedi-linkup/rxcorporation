@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
+use Milon\Barcode\DNS1D;
+use Milon\Barcode\DNS2D;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -43,15 +46,22 @@ class ProductController extends Controller
             'name'=>'required|string|max:100',
             'category_id'=>'required|string',
             'short_des' =>'required|string|max:255',
-            'image'=>'required|Image|mimes:jpg,png,jpeg,bmp,gif',
+            'image'=>'required|Image|mimes:jpg,png,jpeg,bmp,gif,webp',
             'price' => 'max:10',
         ]);
 
-        $slug = trim($this->linkup_slug($request->name), '-');
+        // $slug = trim($this->linkup_slug($request->name), '-');
+        $slug = trim(Str::slug($request->name,'-'));
 
+        // return $slug;
+        
+        $url = 'product/show/'.$slug;
+        $barcode = DNS1D::getBarcodePNG($url, 'C39', 1, 33);
+        // return $barcode;
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $slug;
+        // $product->barcode = $barcode;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->short_des = $request->short_des;
@@ -102,7 +112,7 @@ class ProductController extends Controller
         $request->validate([
             'name'=>'required|string',
             'short_des' =>'string',
-            'image'=>'Image|mimes:jpg,png,jpeg,bmp,gif',
+            'image'=>'Image|mimes:jpg,png,jpeg,bmp,gif,webp',
             'price' => 'max:10',
         ]);
         $slug = trim($this->linkup_slug($request->name), '-');

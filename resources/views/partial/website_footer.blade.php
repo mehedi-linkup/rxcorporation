@@ -53,7 +53,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="copyright">
-            &copy; Copyright. All Rights Reserved AZ Trade International
+            &copy; Copyright. All Rights Reserved By Rx Corporation
           </div>
         </div>
         <div class="col-lg-6">

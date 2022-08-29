@@ -9,7 +9,23 @@
         <div class="col-sm-12">
             <div class="page-title-box">
                 <h4 class="page-title">Product Table</h4>
-
+                {{-- <div style="text-align: center;">
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG('11', 'C39')}}" alt="barcode" /><br><br>
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG('123456789', 'C39+',1,33,array(0,255,0), true)}}" alt="barcode" /><br><br>
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG('4', 'C39+',3,33,array(255,0,0))}}" alt="barcode" /><br><br>
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG('12', 'C39+')}}" alt="barcode" /><br><br>
+                    <img src="data:image/png;base64,{{DNS1D::getBarcodePNG('23', 'POSTNET')}}" alt="barcode" /><br/><br/>
+                </div> --}}
+                {{-- <div class="mb-3">{!! DNS1D::getBarcodePNG('product/show/Paul-Ruiz', 'C39') !!}</div> --}}
+                {{-- <img src="data:image/png;base64,{!! DNS1D::getBarcodePNG('4445645656', 'PHARMA') !!}" alt="">
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'PHARMA',1,33) !!}</div>
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'PHARMA2T') !!}</div>
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'CODABAR') !!}</div>
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'KIX') !!}</div>
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'RMS4CC') !!}</div>
+                <div class="mb-3">{!! DNS1D::getBarcodeHTML('4445645656', 'UPCA') !!}</div>     --}}
+                {{-- <div class="mb-3">{!! DNS2D::getBarcodeHTML('4445645656', 'QRCODE', 6, 6) !!}</div> --}}
+                
                 <div class="state-information d-none d-sm-block">
                     <div class="state-graph">
                         <div id="header-chart-1"></div>
@@ -33,20 +49,22 @@
             </ol>
         </div>
     @endif
+
     <div class="row justify-content-center">
         <div class="col-lg-12">
             <div class="card m-b-20">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">User Table</h4>
                     
-
+                    <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr class="text-center">
                                 <th>SL</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Short Description</th>
+                                <th>Barcode</th>
+                                {{-- <th>Short Description</th> --}}
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -57,7 +75,13 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->category->name}}</td>
-                                <td>{!!$item->short_des!!}</td>
+                                <td>
+                                    @if($item->barcode)
+                                    <img src="data:image/png;base64,{{ $item->barcode }}" alt="">
+                                    @else
+                                    No Data
+                                    @endif
+                                </td>
                                 <td class="text-cener">
                                     <img src="{{asset($item->image)}}" alt="" class="table-img">
                                 </td>
@@ -76,8 +100,7 @@
                             @endforeach
                         </tbody>
                     </table>
-              
-                    
+                    </div> 
                 </div>
             </div>
          </div> <!-- end col -->

@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\SpecializeController;
 use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\Admin\BarcodeController;
 
 
 /*
@@ -78,6 +79,9 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::resource('/specialize',SpecializeController::class)->except('show');
     Route::resource('/partner',PartnerController::class)->except('show');
     Route::resource('/service',ServiceController::class)->except('show');
+
+    Route::get('/barcode', [BarcodeController::class, 'index'])->name('barcode.index');
+    Route::post('/barcode', [BarcodeController::class, 'generate'])->name('barcode.store');
 
    
     Route::get('/contact/list',[ContactController::class,'contactList'])->name('contact.list');
