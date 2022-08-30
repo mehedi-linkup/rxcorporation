@@ -46,6 +46,7 @@
                                 <th>SL</th>
                                 <th>Name</th>
                                 <th>Category</th>
+                                <th>Code</th>
                                 <th>Short Description</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -57,6 +58,7 @@
                                 <td>{{$key+1}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->category->name}}</td>
+                                <td>{{ $item->code }}</td>
                                 <th>{!! Str::limit($item->short_des, 30)!!}</th>
                                 <td class="text-cener">
                                     <img src="{{asset($item->image)}}" alt="" class="table-img">
