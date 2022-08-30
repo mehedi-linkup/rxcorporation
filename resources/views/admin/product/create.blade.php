@@ -82,6 +82,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label>Product Code</label>
+                                    <div>
+                                        <input  name="code"  type="text" value="{{old('code')}}"  class="form-control"  placeholder="Enter Code"/>   
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Image<span class="text-primary">*</span></label>
                                     <div>
                                         <input  name="image" type="file"  class="form-control" onchange="aboutUrl(this);" />
@@ -154,19 +160,18 @@
             required: true
         },
         category_id: {
-        required: true
+            required: true
         },
         short_des: {
             required: true
         },
-        image: {
-        required: true
+        code: {
+            required: true
         },
-       
- 
+        image: {
+            required: true
+        },
     }
-
- 
 });
  
 </script>

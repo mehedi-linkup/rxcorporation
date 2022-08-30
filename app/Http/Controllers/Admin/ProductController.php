@@ -46,10 +46,10 @@ class ProductController extends Controller
             'name'=>'required|string|max:100',
             'category_id'=>'required|string',
             'short_des' =>'required|string|max:255',
+            'code' => 'required|max:255|unique:products',
             'image'=>'required|Image|mimes:jpg,png,jpeg,bmp,gif,webp',
             'price' => 'max:10',
         ]);
-
         // $slug = trim($this->linkup_slug($request->name), '-');
         $slug = trim(Str::slug($request->name,'-'));
 
@@ -57,15 +57,23 @@ class ProductController extends Controller
         
         // $url = 'product/show/'.$slug;
         // $barcode = DNS1D::getBarcodePNG($url, 'C39', 1, 33);
+        $image = $request->file('image');
+        $imgExt = strtolower($image->getClientOriginalExtension());
+        $nameGen = preg_replace('/\s+/', '', $request->code);
+        $imagName = $nameGen .'.'. $imgExt;
+        $upLocation = 'uploads/product/';
+        $image->move($upLocation, $imagName);
+
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $slug;
-        // $product->barcode = $barcode;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->short_des = $request->short_des;
         $product->description = $request->description;
-        $product->image = $this->imageUpload($request, 'image', 'uploads/product')?? '';
+        $product->code = $request->code;
+        $product->image = $upLocation . $imagName;
+        // $product->image = $this->imageUpload($request, 'image', 'uploads/product')?? '';
         $product->save();
         if($product){
             return redirect()->route('product.index')->with('success','Product added successfullly');
@@ -112,27 +120,41 @@ class ProductController extends Controller
             'name'=>'required|string',
             'short_des' =>'string',
             'image'=>'Image|mimes:jpg,png,jpeg,bmp,gif,webp',
+            'code' => 'required',
             'price' => 'max:10',
         ]);
         $slug = trim($this->linkup_slug($request->name), '-');
         $product = Product::findOrFail($id);
-        $productImage='';
+        // $productImage='';
         if($request->hasFile('image')){
             if(!empty($product->image) && file_exists($product->image)){
                 unlink($product->image);
             }
-            $productImage = $this->imageUpload($request, 'image', 'uploads/product') ?? '';
+            // $productImage = $this->imageUpload($request, 'image', 'uploads/product') ?? '';
+            $image = $request->file('image');
+            $imgExt = strtolower($image->getClientOriginalExtension());
+            $nameGen = preg_replace('/\s+/', '', $request->code);
+            $imagName = $nameGen .'.'. $imgExt;
+            $upLocation = 'uploads/product/';
+            $image->move($upLocation, $imagName);
+            $product->image = $upLocation . $imagName;
         }
-        else{
-            $productImage = $product->image;
-        }
+        // else{
+        //     $nameGen = $product->image;
+        //     rename($product->image,'/uploads/product/anything.jpg');
+        //     return ;
+        //     $nameGenArr = explode('.', $nameGen);
+        //     return $lastName = $request->code .'.'.  $nameGenArr[1];
+        //     $upLocation = 'uploads/product/';
+        // }
         $product->name = $request->name;
         $product->category_id = $request->category_id;
         $product->price = $request->price;
         $product->slug = $slug;
         $product->short_des = $request->short_des;
         $product->description = $request->description;
-        $product->image = $productImage;
+        $product->code = $request->code;
+        // $product->image = $productImage;
         $product->save();
         if($product){
             return redirect()->route('product.index')->with('success','Product updated successfully');

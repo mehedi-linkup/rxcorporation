@@ -1,4 +1,5 @@
 @extends('layouts.website')
+@section('title', 'Home')
 @push('website-css')
     <link rel="stylesheet" href="{{ asset('website/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('website/css/owl.theme.default.min.css') }}">
@@ -102,7 +103,7 @@
                     <div class="col-lg-3">
                         <div class="card border-0">
                             <div class="img-box p-lg-3">
-                                <img src="{{ $item->image }}" class="card-img-top" alt="{{ $item->image }}">
+                                <img src="{{ $item->image }}" class="card-img-top" alt="{{ $item->code }}">
                                 <a class="img-link" href="{{ route('product.details', $item->slug) }}"></a>
                             </div>
                             <div class="card-body">

@@ -72,9 +72,6 @@
                                               
                                     </div>
                                 </div>
-                               
-                               
-                              
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -82,6 +79,12 @@
                                     <div>
                                         <textarea id="description" placeholder="Description"  name="description" rows="10">{{$product->description}}</textarea>
                                                
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Product Code</label>
+                                    <div>
+                                        <input name="code" type="text"  class="form-control" value="{{ $product->code }}" placeholder="Enter Code" />   
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -165,7 +168,7 @@
                required: true
            },
            image: {
-           required: true
+        //    required: true
            },
           
     

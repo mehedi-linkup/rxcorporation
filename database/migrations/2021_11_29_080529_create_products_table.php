@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
                     ->OnDelete('cascade');
             $table->string('name', 100);
             $table->string('slug');
-            $table->text('barcode')->nullable();
+            $table->text('code')->nullable();
             $table->string('short_des', 255);
             $table->string('price');
             $table->text('description')->nullable();
